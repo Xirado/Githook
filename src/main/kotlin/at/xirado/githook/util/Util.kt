@@ -8,20 +8,6 @@ enum class OS {
     WINDOWS, LINUX, MAC, SOLARIS
 }
 
-fun getCommand(command: Command): List<String> {
-    val base = shell.toMutableList()
-
-    if (command.workingDir != null) {
-        base += when (os) {
-            OS.WINDOWS -> "cd" + command.workingDir
-            OS.LINUX -> "cd" + command.workingDir
-            else -> throw IllegalStateException("Unsupported OS")
-        }
-    }
-
-    return base.toImmutableList()
-}
-
 val shell: List<String> by lazy {
     return@lazy when (os) {
         OS.WINDOWS -> listOf("cmd", "/c")

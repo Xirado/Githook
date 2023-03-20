@@ -19,6 +19,4 @@ data class Command(
     val exec: String,
     @SerialName("exit_code")
     val exitCode: List<Int>? = listOf(0),
-    @SerialName("working_dir")
-    val workingDir: String?
 )
